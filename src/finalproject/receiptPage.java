@@ -12,18 +12,35 @@ public class receiptPage extends javax.swing.JFrame {
 
     String userEmail;
     int seatNumber;
+    int ticketID;
     
     public receiptPage() {
         initComponents();
     }
     
-    public receiptPage(String userEMAIL, int seatNUMBER) {
+    public receiptPage(String userEMAIL) {
+        userEmail = userEMAIL;
+        initComponents();
+        
+        if (userEmail == "NONE") {
+            jLabel2.setText("$17.00 returned as credit and %15 cancelation fee");
+        } else {
+            jLabel2.setText("$20.00 returned as credit and no cancelation fee");
+        }
+        
+    }
+    
+    public receiptPage(String userEMAIL, int seatNUMBER, int ticketid) {
+        ticketID = ticketid;
         seatNumber = seatNUMBER;
         userEmail = userEMAIL;
         initComponents();
         
+        jLabel2.setText("Ammount");
+        jLabel3.setText("Seat");
         seatNUM.setText(Integer.toString(seatNumber));
         ammountLabel.setText("$20.00");
+        ticketIDRECEIPT.setText("Ticket ID: " + Integer.toString(ticketID));
     }
 
     /**
@@ -41,6 +58,7 @@ public class receiptPage extends javax.swing.JFrame {
         ammountLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         seatNUM = new javax.swing.JLabel();
+        ticketIDRECEIPT = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,12 +69,10 @@ public class receiptPage extends javax.swing.JFrame {
         jLabel1.setText("RECEIPT");
 
         jLabel2.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
-        jLabel2.setText("Ammount:");
 
         ammountLabel.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
-        jLabel3.setText("Seat");
 
         seatNUM.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
 
@@ -68,24 +84,31 @@ public class receiptPage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                        .addComponent(ticketIDRECEIPT))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ammountLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addGap(68, 68, 68)
-                        .addComponent(seatNUM)))
-                .addContainerGap(166, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ammountLabel))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3)
+                                .addGap(68, 68, 68)
+                                .addComponent(seatNUM)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(ticketIDRECEIPT))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -94,7 +117,7 @@ public class receiptPage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(seatNUM))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -153,5 +176,6 @@ public class receiptPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel seatNUM;
+    private javax.swing.JLabel ticketIDRECEIPT;
     // End of variables declaration//GEN-END:variables
 }

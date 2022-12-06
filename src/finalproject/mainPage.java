@@ -73,6 +73,7 @@ public class mainPage extends javax.swing.JFrame {
         movieList = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         selectMovieBtn = new javax.swing.JButton();
+        cancelTicketButton = new javax.swing.JButton();
         CADisplay = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         accouncementsList = new javax.swing.JList<>();
@@ -161,6 +162,14 @@ public class mainPage extends javax.swing.JFrame {
             }
         });
 
+        cancelTicketButton.setFont(new java.awt.Font("Serif", 0, 18)); // NOI18N
+        cancelTicketButton.setText("Cancel Ticket");
+        cancelTicketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelTicketButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout SMDisplayLayout = new javax.swing.GroupLayout(SMDisplay);
         SMDisplay.setLayout(SMDisplayLayout);
         SMDisplayLayout.setHorizontalGroup(
@@ -168,15 +177,17 @@ public class mainPage extends javax.swing.JFrame {
             .addGroup(SMDisplayLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(SMDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                     .addGroup(SMDisplayLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(SMDisplayLayout.createSequentialGroup()
-                .addGap(209, 209, 209)
+                .addGap(100, 100, 100)
                 .addComponent(selectMovieBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelTicketButton)
+                .addGap(100, 100, 100))
         );
         SMDisplayLayout.setVerticalGroup(
             SMDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,14 +197,21 @@ public class mainPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(selectMovieBtn)
+                .addGroup(SMDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectMovieBtn)
+                    .addComponent(cancelTicketButton))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
         CADisplay.setBackground(new java.awt.Color(255, 204, 204));
         CADisplay.setPreferredSize(new java.awt.Dimension(492, 513));
 
-        accouncementsList.setFont(new java.awt.Font("Serif", 0, 48)); // NOI18N
+        accouncementsList.setFont(new java.awt.Font("Serif", 0, 36)); // NOI18N
+        accouncementsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "NEW JAWS ", "MOVIE JUST RELEASED", "NEW CARS", "MOVIE JUST RELEASED", "IF YOU WANT EARLY", "INFO ON UPCOMING", "MOVIES REGISTER NOW!" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         jScrollPane2.setViewportView(accouncementsList);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -245,7 +263,7 @@ public class mainPage extends javax.swing.JFrame {
             .addGroup(showTimesDisplayLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(showTimesDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                     .addGroup(showTimesDisplayLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,9 +271,9 @@ public class mainPage extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(showTimesDisplayLayout.createSequentialGroup()
-                .addGap(204, 204, 204)
+                .addGap(216, 216, 216)
                 .addComponent(selectShowTime)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         showTimesDisplayLayout.setVerticalGroup(
             showTimesDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,9 +284,9 @@ public class mainPage extends javax.swing.JFrame {
                     .addComponent(movieNameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGap(18, 18, 18)
                 .addComponent(selectShowTime)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(SMDisplay, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -396,6 +414,13 @@ public class mainPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_selectShowTimeActionPerformed
 
+    private void cancelTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelTicketButtonActionPerformed
+        enterTicketID ET = new enterTicketID(userEmail);
+        ET.setLocationRelativeTo(null);
+        ET.setVisible(true);
+        dispose(); 
+    }//GEN-LAST:event_cancelTicketButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -439,6 +464,7 @@ public class mainPage extends javax.swing.JFrame {
     private javax.swing.JPanel SMDisplay;
     private javax.swing.JList<String> accouncementsList;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton cancelTicketButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

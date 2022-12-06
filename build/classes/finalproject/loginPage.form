@@ -161,7 +161,6 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="emailInput">
           <Properties>
-            <Property name="text" type="java.lang.String" value="asdf@gmail.com"/>
             <Property name="toolTipText" type="java.lang.String" value="e.g. movieTheatre@gmail.com"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Serif" size="12" style="0"/>
@@ -176,7 +175,6 @@
         </Component>
         <Component class="javax.swing.JPasswordField" name="passInput">
           <Properties>
-            <Property name="text" type="java.lang.String" value="asdf4"/>
             <Property name="toolTipText" type="java.lang.String" value="e.g. jah2hgal."/>
           </Properties>
           <Events>

@@ -20,6 +20,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
     String usersFirstName;
     String usersLastName;
     int seatNumber;
+    int ticketid;
     /**
      * Creates new form paymentPage
      */
@@ -27,7 +28,8 @@ public class movieTicketPayment extends javax.swing.JFrame {
         initComponents();
     }
     
-    public movieTicketPayment(String username, int seatNUMBER) {
+    public movieTicketPayment(String username, int seatNUMBER, int ticketID) {
+        ticketid = ticketID;
         seatNumber = seatNUMBER;
         userEmail = username;
         initComponents();
@@ -353,7 +355,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
             }
         }
         if (logIN) {
-            receiptPage m = new receiptPage(userEmail, seatNumber);
+            receiptPage m = new receiptPage(userEmail, seatNumber, ticketid);
             m.setLocationRelativeTo(null);
             m.setVisible(true);
             dispose();

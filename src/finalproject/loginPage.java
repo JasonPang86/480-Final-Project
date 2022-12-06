@@ -80,7 +80,6 @@ public class loginPage extends javax.swing.JFrame {
             }
         });
 
-        emailInput.setText("asdf@gmail.com");
         emailInput.setToolTipText("e.g. movieTheatre@gmail.com");
         emailInput.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
         emailInput.setName(""); // NOI18N
@@ -98,7 +97,6 @@ public class loginPage extends javax.swing.JFrame {
             }
         });
 
-        passInput.setText("asdf4");
         passInput.setToolTipText("e.g. jah2hgal.");
         passInput.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

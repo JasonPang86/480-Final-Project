@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package finalproject;
+import java.util.Random;
 
 /**
  *
@@ -309,10 +310,22 @@ public class selectSeatPage extends javax.swing.JFrame {
         } else if (seat18.isSelected()) {
             seatNumber = 18;
         }
-        movieTicketPayment MTP = new movieTicketPayment(userEmail, seatNumber);
-        MTP.setLocationRelativeTo(null);
-        MTP.setVisible(true);
-        dispose();
+        
+        Random random = new Random();
+
+        int rand = random.nextInt(10000);
+        
+        if (userEmail == "NONE") {
+            movieTicketPayment MTP = new movieTicketPayment(userEmail, seatNumber, rand);
+            MTP.setLocationRelativeTo(null);
+            MTP.setVisible(true);
+            dispose();
+        } else {
+            receiptPage m = new receiptPage(userEmail, seatNumber, rand);
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_reserveSeatButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

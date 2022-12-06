@@ -14,8 +14,8 @@ CREATE TABLE Theater(
 	showtimeLocation	int unsigned NOT NULL
 );
 INSERT INTO THEATER(Movies, showtimeLocation) VALUES
-    ('Movie1',1),
-    ('Movie2',2);
+    ('Jaws',1),
+    ('Cars',2);
 SELECT * from THEATER;
 CREATE TABLE SHOWTIMES1(
 	date				VARCHAR(150) NOT NULL,
