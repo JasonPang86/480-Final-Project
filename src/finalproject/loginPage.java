@@ -23,7 +23,7 @@ public class loginPage extends javax.swing.JFrame {
         initComponents();
     }
     
-    static String usersEmail = "NONE";
+    public static String usersEmail = "NONE";
 
     /**
      * This method is called from within the constructor to initialize the form.

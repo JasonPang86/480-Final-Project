@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class selectSeatPage extends javax.swing.JFrame {
 
-    String userEmail;
+    private String userEmail;
     public selectSeatPage() {
         initComponents();
     }

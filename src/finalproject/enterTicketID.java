@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class enterTicketID extends javax.swing.JFrame {
 
-    String userEmail;
+    private String userEmail;
     
     public enterTicketID() {
         initComponents();

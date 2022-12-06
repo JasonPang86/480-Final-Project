@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class forgotPassPage extends javax.swing.JFrame {
 
-    String userEmail;
-    String usersFirstName;
-    int checker;
-    String usersLastName;
-    String usersPassword;
+    private String userEmail;
+    private String usersFirstName;
+    private int checker;
+    private String usersLastName;
+    private String usersPassword;
     
     public forgotPassPage() {
         initComponents();

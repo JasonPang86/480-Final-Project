@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class paymentPage extends javax.swing.JFrame {
     
-    String userEmail;
-    String password;
-    int checker;
-    String usersFirstName;
-    String usersLastName;
+    private String userEmail;
+    private String password;
+    private int checker;
+    private String usersFirstName;
+    private String usersLastName;
     /**
      * Creates new form paymentPage
      */

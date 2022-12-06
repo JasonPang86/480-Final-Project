@@ -10,9 +10,9 @@ package finalproject;
  */
 public class receiptPage extends javax.swing.JFrame {
 
-    String userEmail;
-    int seatNumber;
-    int ticketID;
+    private String userEmail;
+    private int seatNumber;
+    private int ticketID;
     
     public receiptPage() {
         initComponents();

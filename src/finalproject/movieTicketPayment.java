@@ -14,13 +14,13 @@ import javax.swing.JOptionPane;
  */
 public class movieTicketPayment extends javax.swing.JFrame {
     
-    String userEmail;
-    String password;
-    int checker;
-    String usersFirstName;
-    String usersLastName;
-    int seatNumber;
-    int ticketid;
+    private String userEmail;
+    private String password;
+    private int checker;
+    private String usersFirstName;
+    private String usersLastName;
+    private int seatNumber;
+    private int ticketid;
     /**
      * Creates new form paymentPage
      */

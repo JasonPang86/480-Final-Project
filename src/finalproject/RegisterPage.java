@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class RegisterPage extends javax.swing.JFrame {
 
-    String userEmail = "HI";
+    private String userEmail = "HI";
     
     public RegisterPage() {
         initComponents();

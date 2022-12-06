@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class userInfoPage extends javax.swing.JFrame {
 
-    String userEmail;
-    String usersFirstName;
-    String usersLastName;
-    String usersPassword;
+    private String userEmail;
+    private String usersFirstName;
+    private String usersLastName;
+    private String usersPassword;
     
     public userInfoPage() {
         initComponents();
