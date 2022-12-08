@@ -10,6 +10,8 @@ import java.sql.SQLException;
  * @author toshi
  */
 public class ShowRoom {
+    
+    //delcare variables and constructors
     ArrayList<Integer> seats;
     String showtimeId;
     int showroomId;
@@ -20,7 +22,7 @@ public class ShowRoom {
         this.SeatLocations = seatLocation;
     }
     public ArrayList<Seats> getSeats()throws SQLException{
-        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");   
+        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");   
         connection.initializeConnection();
         ArrayList<Integer> seat = connection.getTableInt("SEATMAP"+showtimeId+"_"+Integer.toString(showroomId),1);
         ArrayList<Integer> state = connection.getTableInt("SEATMAP"+showtimeId+"_"+Integer.toString(showroomId), 2);

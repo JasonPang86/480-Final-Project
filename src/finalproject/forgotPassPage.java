@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class forgotPassPage extends javax.swing.JFrame {
 
+    //delcare variables and constructors
     private String userEmail;
     private String usersFirstName;
     private int checker;
@@ -149,6 +150,7 @@ public class forgotPassPage extends javax.swing.JFrame {
     }//GEN-LAST:event_emailInputActionPerformed
 
     private void getPasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getPasswordBtnActionPerformed
+        //based on email inputed find password for user
         String email = emailInput.getText();
         boolean logIN = true;
         if (email.length() <= 10) {
@@ -168,7 +170,7 @@ public class forgotPassPage extends javax.swing.JFrame {
         String x;
         try {
             if (logIN) {
-                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");
+                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
                 connection.initializeConnection();
                 x = connection.getUserPass(email);
                 if (x.equals("NONE")) {
@@ -181,6 +183,7 @@ public class forgotPassPage extends javax.swing.JFrame {
             }
         } catch(SQLException e){e.printStackTrace();}
         
+        //after user inputs email take to login page to log in
         if (logIN) {
             if (checker == 1){
                 loginPage l = new loginPage();

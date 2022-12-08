@@ -4,6 +4,7 @@
  */
 package finalproject;
 
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,13 +13,16 @@ import javax.swing.JOptionPane;
  */
 public class enterTicketID extends javax.swing.JFrame {
 
+    //delcare variables and constructors
     private String userEmail;
+    private int userTicketID;
     
     public enterTicketID() {
         initComponents();
     }
     
-    public enterTicketID(String userEMAIL) {
+    public enterTicketID(String userEMAIL, int TICKETID) {
+        userTicketID = TICKETID;
         userEmail = userEMAIL;
         initComponents();
     }
@@ -109,16 +113,27 @@ public class enterTicketID extends javax.swing.JFrame {
     }//GEN-LAST:event_ticketIDTEXTActionPerformed
 
     private void cancelTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelTicketButtonActionPerformed
+        //enter ticket id and verify then cancel
         String ticketID = ticketIDTEXT.getText();
         boolean logIN = true;
         if (ticketID.length() <=0 || ticketID.length() > 9999) {
             JOptionPane.showMessageDialog(this, "ticket doesn't exist or is invalid. Try again");
             logIN = false;
         }
-        receiptPage m = new receiptPage(userEmail);
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        dispose();
+        try {
+            DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
+            connection.initializeConnection();
+            String x = connection.getTicketID(userTicketID);
+            if (ticketID.equals(x)){
+                JOptionPane.showMessageDialog(this, "Success");
+                receiptPage m = new receiptPage(userEmail);
+                m.setLocationRelativeTo(null);
+                m.setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Ticket ID is wrong");
+            }
+        } catch(SQLException e){e.printStackTrace();}
     }//GEN-LAST:event_cancelTicketButtonActionPerformed
 
     /**

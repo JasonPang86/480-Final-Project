@@ -11,6 +11,8 @@ import java.sql.SQLException;
  * @author toshi
  */
 public class Seats {
+    
+    //delcare variables and constructors
     public int seatID;
     public int vacant;
     public String showroomLocation;
@@ -19,7 +21,7 @@ public class Seats {
         this.vacant = vacant;
     }
     public boolean isVacantFresh()throws SQLException{        
-        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");   
+        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");   
         connection.initializeConnection();
         ArrayList<Integer> state = connection.getTableInt(showroomLocation, 2);
         connection.close();
@@ -30,7 +32,7 @@ public class Seats {
         return false;
     }
     public void changeVacancy()throws SQLException{
-        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");   
+        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");   
         connection.initializeConnection();
         connection.deleteUser(showroomLocation);
         connection.close();

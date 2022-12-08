@@ -25,6 +25,13 @@ CREATE TABLE SHOWTIMES1(
         seatLocation		int unsigned NOT NULL
 );
 
+CREATE TABLE seatsTaken(
+	seatID				int unsigned NOT NULL,
+    seatTakenOrNot		int unsigned NOT NULL,
+    ticketID			int unsigned NOT NULL,
+    roomID				int unsigned NOT NULL
+);
+
 CREATE TABLE SHOWTIMES2(
     date    			VARCHAR(150) NOT NULL,
     time                        VARCHAR(150) NOT NULL,

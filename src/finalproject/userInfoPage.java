@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class userInfoPage extends javax.swing.JFrame {
 
+    //delcare variables and constructors
     private String userEmail;
     private String usersFirstName;
     private String usersLastName;
@@ -175,6 +176,7 @@ public class userInfoPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backToMovieSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMovieSelectActionPerformed
+        //go back to main page
         mainPage m = new mainPage(userEmail);
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -182,6 +184,7 @@ public class userInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_backToMovieSelectActionPerformed
 
     private void changeEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeEmailActionPerformed
+        //go to chang email page
         changeEmailPage CE = new changeEmailPage(userEmail, usersFirstName, usersLastName, usersPassword);
         CE.setLocationRelativeTo(null);
         CE.setVisible(true);
@@ -190,6 +193,7 @@ public class userInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_changeEmailActionPerformed
 
     private void changeNameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeNameBtnActionPerformed
+        //go to change name page
         ChangeNamePage CP = new ChangeNamePage(userEmail, usersFirstName, usersLastName, usersPassword);
         CP.setLocationRelativeTo(null);
         CP.setVisible(true);
@@ -197,6 +201,7 @@ public class userInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_changeNameBtnActionPerformed
 
     private void changeSavedPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeSavedPaymentActionPerformed
+        //go to change payment page
         paymentPage PP = new paymentPage(userEmail, usersPassword, 10, usersFirstName, usersLastName);
         PP.setLocationRelativeTo(null);
         PP.setVisible(true);

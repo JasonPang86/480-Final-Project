@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package finalproject;
+import java.sql.SQLException;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,6 +13,7 @@ import java.util.Random;
  */
 public class selectSeatPage extends javax.swing.JFrame {
 
+    //delcare variables and constructors
     private String userEmail;
     public selectSeatPage() {
         initComponents();
@@ -272,6 +275,8 @@ public class selectSeatPage extends javax.swing.JFrame {
     }//GEN-LAST:event_seat1FocusGained
 
     private void reserveSeatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserveSeatButtonActionPerformed
+        //check which seat they chose
+        boolean go = true;
         int seatNumber = 0;
         if (seat1.isSelected()) {
             seatNumber = 1;
@@ -311,20 +316,35 @@ public class selectSeatPage extends javax.swing.JFrame {
             seatNumber = 18;
         }
         
+        try {
+            DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
+            connection.initializeConnection();
+            String x = connection.getSeatTaken(seatNumber);
+            if (x.equals("1")){
+                JOptionPane.showMessageDialog(this, "Seat already taken");
+                go = false;
+            }
+        } catch(SQLException e){e.printStackTrace();}
+        
+        //generate random ID
         Random random = new Random();
 
         int rand = random.nextInt(10000);
         
-        if (userEmail == "NONE") {
+        //if guest user go to movie ticket payment page to pay for ticket
+        //else go to reciptpage since registered user info is already saved
+        if (go){
+            if (userEmail == "NONE") {
             movieTicketPayment MTP = new movieTicketPayment(userEmail, seatNumber, rand);
             MTP.setLocationRelativeTo(null);
             MTP.setVisible(true);
             dispose();
-        } else {
+            } else {
             receiptPage m = new receiptPage(userEmail, seatNumber, rand);
             m.setLocationRelativeTo(null);
             m.setVisible(true);
             dispose();
+            }
         }
     }//GEN-LAST:event_reserveSeatButtonActionPerformed
 

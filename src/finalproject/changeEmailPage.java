@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class changeEmailPage extends javax.swing.JFrame {
 
+    //delcare variables and constructors
     private String userEmail;
     private String usersFirstName;
     private String usersLastName;
@@ -191,6 +192,7 @@ public class changeEmailPage extends javax.swing.JFrame {
     }//GEN-LAST:event_newEmailInputActionPerformed
 
     private void forgotPassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotPassBtnActionPerformed
+        //take to forgot password page
         forgotPassPage f = new forgotPassPage(userEmail, usersFirstName, usersLastName, usersPassword, 10);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
@@ -198,6 +200,7 @@ public class changeEmailPage extends javax.swing.JFrame {
     }//GEN-LAST:event_forgotPassBtnActionPerformed
 
     private void saveButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMousePressed
+        //change email after verifying user exists and user input
         String newEmail = newEmailInput.getText();
         String oldEmail = oldEmailInput.getText();
         String password = passInput.getText();
@@ -234,7 +237,7 @@ public class changeEmailPage extends javax.swing.JFrame {
         String pass;
         try {
             if (logIN) {
-                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");
+                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
                 connection.initializeConnection();
                 y = connection.checkUserEmail(newEmail);
                 pass = connection.getUserPass(oldEmail);

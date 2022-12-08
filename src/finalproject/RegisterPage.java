@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class RegisterPage extends javax.swing.JFrame {
 
+    //delcare variables and constructors
     private String userEmail = "HI";
     
     public RegisterPage() {
@@ -186,6 +187,7 @@ public class RegisterPage extends javax.swing.JFrame {
     }//GEN-LAST:event_emailInputActionPerformed
 
     private void RegisterButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterButtonMousePressed
+        //register use and save to sql after verfiny all input
         String email = emailInput.getText();
         String password = passInput.getText();
         String ReenteredPassword = reenteredPass.getText();
@@ -223,7 +225,7 @@ public class RegisterPage extends javax.swing.JFrame {
         String x;
         try {
             if (logIN) {
-                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");
+                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
                 connection.initializeConnection();
                 x = connection.checkUserEmail(email);
                 if (x.equals(email)) {

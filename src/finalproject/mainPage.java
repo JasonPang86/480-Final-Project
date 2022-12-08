@@ -16,11 +16,13 @@ import javax.swing.JOptionPane;
  */
 public class mainPage extends javax.swing.JFrame {
 
+    //delcare variables and constructors
     private String userEmail = "NONE";
     private String usersFirstName;
     private String usersLastName;
     private String usersPassword;
     private ArrayList<Movie> movies;
+    private int TICKETID;
     
     public mainPage() {
         try{
@@ -43,6 +45,23 @@ public class mainPage extends javax.swing.JFrame {
            movies = theater.getMovies();
         }catch(SQLException e){e.printStackTrace();}
         userEmail = userEMAIL;
+        initComponents();
+        String temp;
+        DefaultListModel movie = new DefaultListModel();
+        movieList.setModel(movie);
+        for (int i = 0; i < movies.size(); i++) {
+            temp = movies.get(i).getMovieName();
+            movie.addElement(temp);
+        }
+    }
+    
+    public mainPage(String userEMAIL, int ticketID) {
+        try{
+           Theater theater = getInstance();
+           movies = theater.getMovies();
+        }catch(SQLException e){e.printStackTrace();}
+        userEmail = userEMAIL;
+        TICKETID = ticketID;
         initComponents();
         String temp;
         DefaultListModel movie = new DefaultListModel();
@@ -349,14 +368,17 @@ public class mainPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userButtonActionPerformed
+        //if guest user take to page and tell them they are not a user and to either register
+        //go back or login is are user
         if (userEmail.equals("NONE")) {
             guestInfoPage g = new guestInfoPage();
             g.setLocationRelativeTo(null);
             g.setVisible(true);
             dispose();
-        } else {
+        } else {    
+            //else they are user and take them to user page
             try {
-                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");
+                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
                 connection.initializeConnection();
                 usersFirstName = connection.getUsersFirstName(userEmail);
                 usersLastName = connection.getUsersLastName(userEmail);
@@ -370,18 +392,21 @@ public class mainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_userButtonActionPerformed
 
     private void RBMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBMovieActionPerformed
+        //show movies 
         SMDisplay.setVisible(true);
         CADisplay.setVisible(false);
         showTimesDisplay.setVisible(false);
     }//GEN-LAST:event_RBMovieActionPerformed
 
     private void CAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAButtonActionPerformed
+        //show announcemnts
         SMDisplay.setVisible(false);
         CADisplay.setVisible(true);
         showTimesDisplay.setVisible(false);
     }//GEN-LAST:event_CAButtonActionPerformed
 
     private void selectMovieBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectMovieBtnActionPerformed
+        //get selected movie and take them there
         String movieName = movieList.getSelectedValue();
         int index = -1;
         for (int i = 0; i < movies.size(); i++) {
@@ -408,6 +433,7 @@ public class mainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_selectMovieBtnActionPerformed
 
     private void selectShowTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectShowTimeActionPerformed
+        //go to selected movie seat page
         selectSeatPage SP = new selectSeatPage(userEmail);
         SP.setLocationRelativeTo(null);
         SP.setVisible(true);
@@ -415,7 +441,8 @@ public class mainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_selectShowTimeActionPerformed
 
     private void cancelTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelTicketButtonActionPerformed
-        enterTicketID ET = new enterTicketID(userEmail);
+        //go to cancel ticket page
+        enterTicketID ET = new enterTicketID(userEmail, TICKETID);
         ET.setLocationRelativeTo(null);
         ET.setVisible(true);
         dispose(); 

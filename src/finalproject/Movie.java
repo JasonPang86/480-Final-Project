@@ -11,6 +11,8 @@ import java.time.*;
  * @author toshi
  */
 public class Movie {
+    
+    //delcare variables, constructors and getters
     private String movieName;
     private ArrayList<Showtimes> showtimes; 
     public String getMovieName(){
@@ -21,7 +23,7 @@ public class Movie {
     };
     public Movie(String name,int showtimes)throws SQLException{
         movieName = name;
-        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");   
+        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");   
         connection.initializeConnection();
         ArrayList<String> dates = connection.getTable("Showtimes" + Integer.toString(showtimes),1);
         ArrayList<String> times = connection.getTable("Showtimes"+ Integer.toString(showtimes), 2);

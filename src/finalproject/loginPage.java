@@ -16,9 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class loginPage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form loginPage
-     */
+    //delcare variables and constructors
     public loginPage() {
         initComponents();
     }
@@ -217,6 +215,7 @@ public class loginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_emailInputActionPerformed
 
     private void forgotPassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotPassBtnActionPerformed
+        //go to forgot pass page
         forgotPassPage f = new forgotPassPage(1);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
@@ -224,6 +223,8 @@ public class loginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_forgotPassBtnActionPerformed
 
     private void loginButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMousePressed
+        //verify login info nd login or ask to input again
+        //and check data base to make sure use exists 
         String email = emailInput.getText();
         String password = passInput.getText();
         boolean logIN = true;
@@ -255,7 +256,7 @@ public class loginPage extends javax.swing.JFrame {
         String x;
         try {
             if (logIN) {
-                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");
+                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
                 connection.initializeConnection();
                 x = connection.checkUser(email, password);
                 if (!x.equals(email)) {
@@ -265,6 +266,7 @@ public class loginPage extends javax.swing.JFrame {
             }
         } catch(SQLException e){e.printStackTrace();}
         
+        //if everything is valid go to main page
         if (logIN) {
             mainPage m = new mainPage(email);
             m.setLocationRelativeTo(null);
@@ -278,6 +280,7 @@ public class loginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void continueAsGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueAsGuestActionPerformed
+        //go to main page as guest user
         mainPage m = new mainPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -285,6 +288,7 @@ public class loginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_continueAsGuestActionPerformed
 
     private void registerButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMousePressed
+        //go to register page and register
         RegisterPage r = new RegisterPage();
         r.setLocationRelativeTo(null);
         r.setVisible(true);
@@ -292,6 +296,7 @@ public class loginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonMousePressed
 
     private void emailInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailInputFocusGained
+        //show example of email
         if (emailInput.getText().equals("e.g. movieTheatre@gmail.com")) {
             emailInput.setText("");
             emailInput.setForeground(Color.gray);

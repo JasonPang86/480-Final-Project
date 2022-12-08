@@ -9,6 +9,7 @@ import java.time.*;
  * @author toshi
  */
 public class Showtimes {
+    //delcare variables and constructors
     private String showtimeId;
     private LocalDate date;
     private LocalTime time;

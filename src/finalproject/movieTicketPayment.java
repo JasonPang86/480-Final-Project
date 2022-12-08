@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class movieTicketPayment extends javax.swing.JFrame {
     
+    //delcare variables and constructors
     private String userEmail;
     private String password;
     private int checker;
@@ -316,6 +317,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
     }//GEN-LAST:event_firstNameInputActionPerformed
 
     private void submitPaymentInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitPaymentInfoActionPerformed
+        //get all inputs 
         String firstName = firstNameInput.getText();
         String lastName = lastNameInput.getText();
         String cardNumber = cardNumberInput.getText();
@@ -324,6 +326,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
         String postalCode = postalCodeInput.getText();
         boolean logIN = true;
         
+        //verify all inputs
         if (cardNumber.length() != 16) {
             JOptionPane.showMessageDialog(this, "Card Number inputed isn't valid");
             logIN = false;
@@ -340,7 +343,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
                     logIN = false;
                 }
             }
-            //P4D5N6
+            
             char[] x = postalCode.toCharArray();
             for (int i = 0; i < postalCode.length(); i++) {
                 if (!logIN) {
@@ -354,6 +357,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
                 }
             }
         }
+        //if everything is valid check out and show recipt
         if (logIN) {
             receiptPage m = new receiptPage(userEmail, seatNumber, ticketid);
             m.setLocationRelativeTo(null);
@@ -363,6 +367,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
     }//GEN-LAST:event_submitPaymentInfoActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        //go to select seats
         selectSeatPage SP = new selectSeatPage(userEmail);
         SP.setLocationRelativeTo(null);
         SP.setVisible(true);
@@ -370,6 +375,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void experationDateInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_experationDateInputFocusGained
+        //show example of exeraiondate
         if (experationDateInput.getText().equals("e.g. 0522")) {
             experationDateInput.setText("");
             experationDateInput.setForeground(Color.gray);
@@ -384,6 +390,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
     }//GEN-LAST:event_experationDateInputFocusLost
 
     private void postalCodeInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_postalCodeInputFocusGained
+        //show example of postal code
         if (postalCodeInput.getText().equals("e.g. Y8G9K6")) {
             postalCodeInput.setText("");
             postalCodeInput.setForeground(Color.gray);
@@ -398,6 +405,7 @@ public class movieTicketPayment extends javax.swing.JFrame {
     }//GEN-LAST:event_postalCodeInputFocusLost
 
     private void cardNumberInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cardNumberInputFocusGained
+        //show example of card input
         if (cardNumberInput.getText().equals("e.g. 9028719265028432")) {
             cardNumberInput.setText("");
             cardNumberInput.setForeground(Color.gray);

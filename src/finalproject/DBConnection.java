@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 public class DBConnection {
     
+    //delcare variables and constructors
     public final String DBURL;
     public final String USERNAME;
     public final String PASSWORD;    
@@ -75,7 +76,54 @@ public class DBConnection {
         mystmt.executeUpdate();
         mystmt.close();
         
-    }    
+    }
+
+    public void seatTAKEN(int seatID, int ticketID)throws SQLException{
+        String query = "INSERT INTO seatsTaken (seatID, seatTakenOrNot, ticketID) VALUES (?,?,?)";
+        PreparedStatement mystmt =dbConnect.prepareStatement(query);        
+        mystmt.setString(1,Integer.toString(seatID));
+        mystmt.setString(2,Integer.toString(1));
+        mystmt.setString(3,Integer.toString(ticketID));
+        mystmt.executeUpdate();
+        mystmt.close();
+    }
+    public String getSeatTaken(int seatID)throws SQLException{
+        String query = "SELECT * FROM seatsTaken WHERE seatID = ?";
+        PreparedStatement mystmt =dbConnect.prepareStatement(query);        
+        mystmt.setString(1,Integer.toString(seatID));
+        ResultSet x = mystmt.executeQuery();
+        if (x.next() == false) {
+            return "NONE";
+        }
+        String result = x.getString("seatTakenOrNot");
+        mystmt.close();
+        return result;
+    }
+    
+    public String getTicketID(int ticketID)throws SQLException{
+        String query = "SELECT * FROM seatsTaken WHERE ticketID = ?";
+        PreparedStatement mystmt =dbConnect.prepareStatement(query);        
+        mystmt.setString(1,Integer.toString(ticketID));
+        ResultSet x = mystmt.executeQuery();
+        if (x.next() == false) {
+            return "NONE";
+        }
+        String result = x.getString("ticketID");
+        mystmt.close();
+        return result;
+    }
+    public String deleteTicketID(int ticketID)throws SQLException{
+        String query = "DELETE FROM seatsTaken WHERE ticketID = ?";
+        PreparedStatement mystmt =dbConnect.prepareStatement(query);        
+        mystmt.setString(1,Integer.toString(ticketID));
+        ResultSet x = mystmt.executeQuery();
+        if (x.next() == false) {
+            return "NONE";
+        }
+        String result = x.getString("ticketID");
+        mystmt.close();
+        return result;
+    }
     /*  
   firstname       VARCHAR(150) NOT NULL,                # First Name of the Registered User
   lastname        VARCHAR(150) NOT NULL,                # Last Name of the Registered User

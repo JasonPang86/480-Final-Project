@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
  * @author karim
  */
 public class ChangeNamePage extends javax.swing.JFrame {
-
+    
+    //delcare variables and constructors
     private String userEmail;
     private String usersFirstName;
     private String usersLastName;
@@ -154,11 +155,12 @@ public class ChangeNamePage extends javax.swing.JFrame {
     }//GEN-LAST:event_newLastNameActionPerformed
 
     private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
+        //change user full name and save in sql database
         String newFirst = newFirstName.getText();
         String newLast = newLastName.getText();
         
         try {
-            DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");
+            DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
             connection.initializeConnection();
             connection.changeUserNames(userEmail, newFirst, newLast);
             JOptionPane.showMessageDialog(this, "Success");
@@ -172,6 +174,7 @@ public class ChangeNamePage extends javax.swing.JFrame {
     }//GEN-LAST:event_changeButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        //go back to user page
         userInfoPage u = new userInfoPage(userEmail, usersFirstName, usersLastName, usersPassword);
         u.setLocationRelativeTo(null);
         u.setVisible(true);

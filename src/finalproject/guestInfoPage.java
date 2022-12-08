@@ -10,9 +10,7 @@ package finalproject;
  */
 public class guestInfoPage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form guestInfoPage
-     */
+    //constructors
     public guestInfoPage() {
         initComponents();
     }
@@ -139,6 +137,7 @@ public class guestInfoPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        //take to register page
         RegisterPage r = new RegisterPage("NONE");
         r.setLocationRelativeTo(null);
         r.setVisible(true);
@@ -146,6 +145,7 @@ public class guestInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        //take back to main page
         mainPage m = new mainPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -153,6 +153,7 @@ public class guestInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        //take to login page
         loginPage l = new loginPage();
         l.setLocationRelativeTo(null);
         l.setVisible(true);

@@ -11,6 +11,8 @@ package finalproject;
 import java.util.*;
 import java.sql.SQLException;
 public class Theater {
+    
+    //delcare variables and constructors
     static private Theater onlyInstance;
     
     ArrayList<Movie> movies;
@@ -21,7 +23,7 @@ public class Theater {
         return onlyInstance;
     }
     private Theater()throws SQLException{
-        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");   
+        DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");   
         connection.initializeConnection();
         ArrayList<String> names = connection.getTable("Theater",1);
         ArrayList<Integer> Showtimes = connection.getTableInt("Theater", 2);

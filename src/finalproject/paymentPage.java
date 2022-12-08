@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class paymentPage extends javax.swing.JFrame {
     
+    //delcare variables and constructors
     private String userEmail;
     private String password;
     private int checker;
@@ -307,6 +308,7 @@ public class paymentPage extends javax.swing.JFrame {
     }//GEN-LAST:event_firstNameInputActionPerformed
 
     private void submitPaymentInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitPaymentInfoActionPerformed
+        //get all inputs
         String firstName = firstNameInput.getText();
         String lastName = lastNameInput.getText();
         String cardNumber = cardNumberInput.getText();
@@ -315,6 +317,7 @@ public class paymentPage extends javax.swing.JFrame {
         String postalCode = postalCodeInput.getText();
         boolean logIN = true;
         
+        //verify all inputs are valid
         if (cardNumber.length() != 16) {
             JOptionPane.showMessageDialog(this, "Card Number inputed isn't valid");
             logIN = false;
@@ -331,7 +334,7 @@ public class paymentPage extends javax.swing.JFrame {
                     logIN = false;
                 }
             }
-            //P4D5N6
+            
             char[] x = postalCode.toCharArray();
             for (int i = 0; i < postalCode.length(); i++) {
                 if (!logIN) {
@@ -346,9 +349,10 @@ public class paymentPage extends javax.swing.JFrame {
             }
         }
         
+        //save payment info to SQL
         try {
             if (logIN && checker == 1) { //resiter
-                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");
+                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
                 connection.initializeConnection();
                 connection.insertUser(firstName, lastName, userEmail, password, postalCode, cardNumber, CVV, experationDate, "30");
                 JOptionPane.showMessageDialog(this, "Success");
@@ -357,7 +361,7 @@ public class paymentPage extends javax.swing.JFrame {
                 m.setVisible(true);
                 dispose();
             } else if (logIN && checker == 10) {    //user
-                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","Shark.Killer572908");
+                DBConnection connection = new DBConnection("jdbc:mysql://localhost/MovieTheater","root","password");
                 connection.initializeConnection();
                 connection.deleteUser(userEmail);
                 connection.insertUser(firstName, lastName, userEmail, password, postalCode, cardNumber, CVV, experationDate, "30");
@@ -370,7 +374,9 @@ public class paymentPage extends javax.swing.JFrame {
         } catch(SQLException e){e.printStackTrace();}
     }//GEN-LAST:event_submitPaymentInfoActionPerformed
 
+    
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        //check if coming from register page or user info and go back to page 
         if (checker == 1) {
             RegisterPage r = new RegisterPage();
             r.setLocationRelativeTo(null);
@@ -386,6 +392,7 @@ public class paymentPage extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void experationDateInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_experationDateInputFocusGained
+        //show example of experation date
         if (experationDateInput.getText().equals("e.g. 0522")) {
             experationDateInput.setText("");
             experationDateInput.setForeground(Color.gray);
@@ -400,6 +407,7 @@ public class paymentPage extends javax.swing.JFrame {
     }//GEN-LAST:event_experationDateInputFocusLost
 
     private void postalCodeInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_postalCodeInputFocusGained
+        //show example of postal code
         if (postalCodeInput.getText().equals("e.g. Y8G9K6")) {
             postalCodeInput.setText("");
             postalCodeInput.setForeground(Color.gray);
@@ -414,6 +422,7 @@ public class paymentPage extends javax.swing.JFrame {
     }//GEN-LAST:event_postalCodeInputFocusLost
 
     private void cardNumberInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cardNumberInputFocusGained
+        //show example of card input
         if (cardNumberInput.getText().equals("e.g. 9028719265028432")) {
             cardNumberInput.setText("");
             cardNumberInput.setForeground(Color.gray);
